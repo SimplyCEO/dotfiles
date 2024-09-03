@@ -268,7 +268,7 @@ bar {
   # The command will run every 5 seconds to minimize CPU usage.
   status_command while true; \
   do \
-    sleep 5 && /home/kanux/.config/sway/scripts/status_bar_information.sh -w -t -c -m -b -a -d; \
+    STATUS_BAR_ASK_SWAP=1 STATUS_BAR_WIFI_EXTENDED=1 /home/kanux/.config/sway/scripts/status_bar_information.sh -w -t -c -m -b -a -d && sleep 5; \
   done
 
   colors {
