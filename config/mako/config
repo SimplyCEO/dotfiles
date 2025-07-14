@@ -1,0 +1,13 @@
+background-color=#AEAEAEE6
+text-color=#161616
+#text-color=#F9F9F9
+border-color=#696969
+progress-color=over #313244
+
+default-timeout=10000
+
+[urgency=high]
+border-color=#B30000
+
+[mode=do-not-disturb]
+invisible=1
