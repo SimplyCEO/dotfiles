@@ -1,0 +1,30 @@
+#!/bin/sh
+
+if [ "${XDG_SESSION_TYPE}" != "x11" ]; then
+  # Applets
+  APPLETS=(
+    'blueman-applet'
+    'nm-applet'
+  )
+
+  # PipeWire (PulseAudio)
+  artix-pipewire-loader >/dev/null 2>&1 &
+
+  # Resolution 1080p to laptop screen and HDMI monitor.
+  wlr-randr --output eDP-1 --mode 1920x1080 >/dev/null 2>&1
+  wlr-randr --output HDMI-A-1 --mode 1920x1080 >/dev/null 2>&1
+
+  # Notification daemon
+  mako >/dev/null 2>&1 &
+
+  # --> Start applets
+  for applet in "${APPLETS[@]}"; do
+    "${applet}" >/dev/null 2>&1 &
+  done
+fi
+
+# Wallpaper daemon
+wpaperd --daemon >/dev/null 2>&1 &
+
+# Panel
+sfwbar >/dev/null 2>&1 &
